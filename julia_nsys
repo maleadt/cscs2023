@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -ue
+
+# figure out where this script (and the course material) is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# ensure our scratch space exists
+SCRATCH=/scratch/snx3000/julia
+mkdir -p $SCRATCH/$USER
+
+# make a symlink to the scratch space in our home dir
+if [ ! -e $HOME/scratch ]; then
+    ln -s $SCRATCH/$USER $HOME/scratch
+fi
+
+# run from scratch to work around NVIDIA bug #4380639
+cd $HOME/scratch
+
+# start Julia under NSight Systems in the course environment
+set -x
+$SCRATCH/nsight-systems/bin/nsys launch \
+julia --project=$SCRIPT_DIR --color=yes "$@"
