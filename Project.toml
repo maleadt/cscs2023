@@ -11,4 +11,8 @@ TestImages = "5e47fb64-e119-507b-a336-dd2b206d9990"
 Tullio = "bc48ee85-29a4-5162-ae0b-a64e1601d4bc"
 
 [extras]
+CUDA_Driver_jll = "4ee394cb-3365-5eb0-8335-949819d2adfc"
 CUDA_Runtime_jll = "76a88914-d11a-5bdc-97e0-2f5a05c973a2"
+
+[preferences.CUDA_Driver_jll]
+compat = false
